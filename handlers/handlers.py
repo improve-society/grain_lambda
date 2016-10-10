@@ -31,4 +31,4 @@ def resource_handler(event, context):
 
 
 def resources_handler(event, context):
-    return generic_handler('resources', context, event, ('_id',))
+    return generic_handler('resources', context, event, ('categories',))
