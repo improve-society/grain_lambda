@@ -12,10 +12,9 @@ def category_handler(event, context):
         collection = db['categories']
 
         json_body = json.load(event.body)
-        r = collection.find({'_id': json_body['_id']})
-        l = list(r)
+        result_set = collection.find({'_id': json_body['_id']})
 
-        return dumps(l)
+        return dumps(list(result_set))
     except errors.ConnectionFailure, e:
         return "Cannot connect to database host: %s" % e
     except errors.CollectionInvalid, e:
