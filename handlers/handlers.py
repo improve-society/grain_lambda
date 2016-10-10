@@ -12,14 +12,14 @@ def generic_handler(collection_name, context, event, ids, db_name='grain', port=
         json_body = json.load(event.body)
         result_set = collection.find({key: json_body[key] for key in ids})
         return dumps(list(result_set))
-    except errors.ConnectionFailure, e:
+    except errors.ConnectionFailure as e:
         return "Cannot connect to database host: %s" % e
-    except errors.CollectionInvalid, e:
+    except errors.CollectionInvalid as e:
         return "Invalid collection: %s" % e
 
 
 def categories_handler(event, context):
-    return generic_handler('categories', context, event, ('lat', 'long'))
+    return generic_handler('resources', context, event, {('lat', 'long'), ('long', '')})
 
 
 def category_handler(event, context):
