@@ -16,6 +16,8 @@ def generic_handler(collection_name, context, event, ids, db_name='grain', port=
         return "Cannot connect to database host: %s" % e
     except errors.CollectionInvalid as e:
         return "Invalid collection: %s" % e
+    except errors.ServerSelectionTimeoutError as e:
+        return "Error: %s" % e
 
 
 def categories_handler(event, context):

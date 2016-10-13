@@ -1,5 +1,8 @@
 import unittest
-import handlers
+from handlers import categories
+from handlers import category
+from handlers import resources
+from handlers import resource
 import json
 from mock import MagicMock
 
@@ -15,18 +18,19 @@ class TestHandlers(unittest.TestCase):
         self.mock_event = None
 
     def test_categories_handler(self):
-        self.mock_context.aws_request_id = 'Test1234'
-        self.mock_event.body = json.dumps({'lat': '', 'long': 4})
-        self.assertEqual(handlers.categories_handler())
+        self.mock_event.body = json.dumps({'lat': 212.2345, 'long': 34234.0, 'radius': 100.0})
+        result = json.loads(categories.categories_handler(self.mock_event, self.mock_context))
+        print result
+        self.assertEqual('', '')
 
-    def test_category_handler(self):
-        self.assertEqual(resources_collection.find({'name': 'Homeless Shelter'}).count(), 1)
-
-    def test_resource_handler(self):
-        self.assertEqual(ux_collection.find({'event': 'tap'}).count(), 1)
-
-    def test_resources_handler(self):
-        self.assertEqual(ux_collection.find({'event': 'tap'}).count(), 1)
+    # def test_category_handler(self):
+    #     self.assertEqual()
+    #
+    # def test_resource_handler(self):
+    #     self.assertEqual()
+    #
+    # def test_resources_handler(self):
+    #     self.assertEqual()
 
 if __name__ == '__main__':
     unittest.main()
