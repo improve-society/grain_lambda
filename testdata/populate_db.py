@@ -38,7 +38,7 @@ def populate_resource_collection(db):
     post = [{'_id': 'hs1',
              'name': 'Homeless Shelter',
              'description': 'This is a resource that provides food and shelter.',
-             'categories': ['Food Bank', 'Shelter'],
+             'categories': ['fb1', 'sh1'],
              'contact': {
                  'phone': '18005555555',
                  'email': 'email@domain.com'
@@ -62,7 +62,7 @@ def populate_resource_collection(db):
             {'_id': 'mrcv1',
              'name': 'Mobile Red Cross Van',
              'description': 'This is a mobile resource that collects blood donations.',
-             'categories': ['Blood Drive'],
+             'categories': ['bd1', 'sh1'],
              'contact': {
                  'phone': '18004902343',
                  'email': 'email2@domain2.org'

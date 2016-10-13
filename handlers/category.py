@@ -6,7 +6,7 @@ import json
 def category_handler(event, context):
     try:
         collection = handler_lib.get_collection('categories')
-        json_body = json.load(event.body)
+        json_body = json.loads(event.body)
         return handler_lib.result_dump(collection.find({'_id': json_body['_id']}))
     except errors.ConnectionFailure as e:
         return 'Cannot connect to database host: %s' % e
