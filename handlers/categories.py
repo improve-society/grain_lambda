@@ -7,14 +7,14 @@ def categories_handler(event, context):
     try:
         resources_collection = handler_lib.get_collection('resources')
         categories_collection = handler_lib.get_collection('categories')
-        json_body = json.loads(event.body)
+        json_params = json.loads(event.params)
         resources_result_set = resources_collection.find(
             {'location.map':
                  {'$within':
                       {'$center':
-                           [[json_body['lat'],
-                             json_body['long']],
-                            json_body['radius']]
+                           [[json_params['lat'],
+                             json_params['long']],
+                            json_params['radius']]
                        }
                   }
              })

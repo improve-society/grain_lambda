@@ -6,8 +6,8 @@ import json
 def resource_handler(event, context):
     try:
         collection = handler_lib.get_collection('resources')
-        json_body = json.loads(event.body)
-        return handler_lib.result_dump(collection.find({'_id': json_body['_id']}))
+        json_params = json.loads(event.params)
+        return handler_lib.result_dump(collection.find({'_id': json_params['_id']}))
     except errors.ConnectionFailure as e:
         return 'Cannot connect to database host: %s' % e
     except errors.CollectionInvalid as e:

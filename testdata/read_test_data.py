@@ -8,8 +8,6 @@ class TestDatabaseInsert(unittest.TestCase):
     def test_read_categories(self):
         db = self.connect_to_database()
         categories_collection = db['categories']
-        # result = categories_collection.find({'name': { "$in": ['Food Bank', 'Blood Drive']}})
-        # print list(result)
         self.assertEqual(categories_collection.find({'name': 'Food Bank'}).count(), 1)
 
     def test_read_resources(self):
